@@ -24,14 +24,14 @@ export default function Navbar() {
             </Link>
           </motion.li>
           <motion.li
-            className="mx-3 focus:cursor-auto hover:bg-slate-300 p-1 rounded-md"
+            className="mx-3 focus:cursor-auto hover:bg-slate-300 p-1 rounded-md "
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.9 }}
           >
             <Link to={"/about"}>About</Link>
           </motion.li>
           <motion.li
-            className="mx-3 focus:cursor-auto hover:bg-slate-300 p-1 rounded-md"
+            className="mx-3 focus:cursor-auto hover:bg-slate-300 p-1 rounded-md "
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.9 }}
           >
