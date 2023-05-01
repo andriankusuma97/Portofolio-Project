@@ -7,6 +7,10 @@ import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import { useInView } from "react-intersection-observer";
+import { RiVuejsFill } from "react-icons/ri";
+import { FaReact } from "react-icons/fa";
+import { SiPostgresql,SiMongodb,SiRailway,SiFirebase } from "react-icons/si";
+
 
 function HomePage() {
   const project = useSelector((state) => {
@@ -18,6 +22,7 @@ function HomePage() {
   const { ref, inView } = useInView();
   const animation = useAnimation();
   const animation1 = useAnimation();
+  const animation2 = useAnimation();
 
   console.log(project);
 
@@ -43,6 +48,14 @@ function HomePage() {
           duration: 1,
         },
       });
+      animation2.start({
+        opacity: 1,
+        y: 0,
+        transition: {
+          ease: [0.5, 0.71, 1, 1.5],
+          duration: 2,
+        },
+      });
     }
     if (!inView) {
       animation.start({
@@ -52,6 +65,10 @@ function HomePage() {
       animation1.start({
         x: -200,
         opacity: 0,
+      });
+      animation2.start({
+        opacity: 0,
+        y: -200,
       });
     }
   }, [inView]);
@@ -116,7 +133,7 @@ function HomePage() {
             </div>
           </div>
         </motion.div>
-
+        
         <motion.div
           initial={{
             opacity: 0,
@@ -132,6 +149,21 @@ function HomePage() {
             height={300}
             width={300}
           />
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: -200,
+            }}
+            animate={animation2}
+             className="flex flex-cols sm:flex-row text-4xl text-center items-center justify-center mb-8 mx-auto mt-10">
+              <RiVuejsFill className="text-green-700 mx-3"/>
+              <FaReact className="text-sky-700 mx-3"/>
+              <SiPostgresql className="text-blue-800  mx-3"/>
+              <SiMongodb className="text-green-800 bg-black rounded-full  mx-3"/>
+              <SiRailway className="text-black  mx-3"/>
+              <SiFirebase className="text-orange-600  mx-3"/>
+            </motion.div>
+
         </motion.div>
       </div>
 

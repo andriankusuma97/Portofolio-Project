@@ -9,6 +9,9 @@ import { useInView } from "react-intersection-observer";
 
 import { ImLocation2 } from "react-icons/im";
 import { FiMail } from "react-icons/fi";
+import { RiVuejsFill } from "react-icons/ri";
+import { FaReact } from "react-icons/fa";
+import { SiPostgresql,SiMongodb,SiRailway,SiFirebase } from "react-icons/si";
 
 
 function AboutPage() {
@@ -195,6 +198,28 @@ function AboutPage() {
             <div className="mb-4 pb-2 text-xl print:text-base font-bold border-b-2 border-slate-700 uppercase">
               Skills
             </div>
+            <motion.div
+            initial={{
+              opacity: 0,
+              y: -200,
+            }}
+            animate={{
+              opacity: 1,
+                y: 0,
+                transition: {
+                  ease: [0.5, 0.71, 1, 1.5],
+                  duration: 2,
+                },
+            }}
+             className="flex flex-cols sm:flex-row text-4xl text-center items-center justify-center mb-8 mx-auto">
+              <RiVuejsFill className="text-green-700 mx-3"/>
+              <FaReact className="text-sky-700 mx-3"/>
+              <SiPostgresql className="text-blue-800  mx-3"/>
+              <SiMongodb className="text-green-800 bg-black rounded-full  mx-3"/>
+              <SiRailway className="text-black  mx-3"/>
+              <SiFirebase className="text-orange-600  mx-3"/>
+            </motion.div>
+           
             <div className="grid grid-cols-1 md:grid-cols-2 px-5">
               <div className="flex flex-col w-full gap-1 mb-4" >
                 <div className="flex flex-row w-full justify-between">
