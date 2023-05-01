@@ -17,7 +17,7 @@ const Data = [
   {
     id: 1,
     name: "KaltimPost",
-    img: "./src/assets/KaltimPost-User.png",
+    img: "https://i.imgur.com/JsukcTk.png",
     description: "A News Portal website",
     link: "https://newspost-customer.web.app/",
     tags: ["React", "Redux", "TailwindCSS"],
@@ -25,7 +25,7 @@ const Data = [
   {
     id: 2,
     name: "KaltimPost CMS",
-    img: "./src/assets/KaltimPost-CMS.png",
+    img: "https://i.imgur.com/HU44alm.png",
     description: "This is KaltimPost CMS website",
     link: "https://newspost-45150.web.app/",
     tags: ["React", "Redux", "TailwindCSS"],
@@ -33,7 +33,7 @@ const Data = [
   {
     id: 3,
     name: "My Exercise Gym",
-    img: "./src/assets/MyGym-web.png",
+    img: "https://i.imgur.com/U2PBs5v.png",
     description: "A Gym website",
     link: "https://individual-project-f002a.web.app",
     tags: ["Vue", "Pinia", " bootstrap"],
@@ -41,7 +41,7 @@ const Data = [
   {
     id: 4,
     name: "Rental Rooms",
-    img: "./src/assets/Rental-Rooms.png",
+    img: "https://i.imgur.com/fv3xxl4.png",
     description: "A Gym website",
     link: "https://rentroom-3.web.app/",
     tags: ["Vue", "Pinia", " bootstrap"],
@@ -49,9 +49,9 @@ const Data = [
   {
     id: 5,
     name: "Rental Rooms Challange",
-    img: "./src/assets/Rental-Rooms-Challange.png",
+    img: "./src/assets/images/Rental-Rooms-Challange.png",
     description: "A Gym website",
-    link: " https://challange-2-rentroom.web.app/",
+    link: "https://i.imgur.com/bbM9naa_d.webp?maxwidth=760&fidelity=grand",
     tags: ["Vue", "Pinia", " bootstrap"],
   },
 ];
