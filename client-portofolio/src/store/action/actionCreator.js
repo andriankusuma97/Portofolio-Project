@@ -42,17 +42,17 @@ const Data = [
     id: 4,
     name: "Rental Rooms",
     img: "https://i.imgur.com/fv3xxl4.png",
-    description: "A Gym website",
+    description: "Rental Rooms website",
     link: "https://rentroom-3.web.app/",
     tags: ["Vue", "Pinia", " bootstrap"],
   },
   {
     id: 5,
     name: "Rental Rooms Challange",
-    img: "./src/assets/images/Rental-Rooms-Challange.png",
-    description: "A Gym website",
-    link: "https://i.imgur.com/bbM9naa_d.webp?maxwidth=760&fidelity=grand",
-    tags: ["Vue", "Pinia", " bootstrap"],
+    img: "https://i.imgur.com/bbM9naa_d.webp?maxwidth=760&fidelity=grand",
+    description: "Rental Rooms challange website",
+    link: "https://challange-2-rentroom.web.app/",
+    tags: ["Vue",  " bootstrap"],
   },
 ];
 

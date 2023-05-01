@@ -29,7 +29,7 @@ export default function Card({data}) {
             whileHover={{ scale: 0.9 }}
             className="rounded-md"
             src= {data?.img}
-            alt=""
+            alt={data?.name}
           />
         </div>
 

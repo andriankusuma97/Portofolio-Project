@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin,BsCalendar2Date } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -73,6 +73,12 @@ function AboutPage() {
                 Andrian Kusuma Solihin
               </h1>
               <h1 className="font-mono mb-2">Single</h1>
+              <div className="flex flex-row items-center justify-center gap-2">
+                <span>
+                  <BsCalendar2Date />
+                </span>
+                <h1> 28 September 1997 </h1>
+              </div>
               <div className="flex flex-row items-center justify-center">
                 <span>
                   <ImLocation2 />
