@@ -6,7 +6,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function Card() {
+export default function Card({data}) {
   return (
     <div className=" col-span-6 ">
       <div className="bg-white relative flex flex-col w-full rounded-3xl rounded-br-2xl border border-solid border-dark bg-light p-4 shadow-xl ">
@@ -14,14 +14,14 @@ export default function Card() {
           <motion.img
             whileHover={{ scale: 0.9 }}
             className="rounded-md"
-            src="https://images2.prokal.co/webkp/file/berita/2023/04/30/thumb/c1c3a94093888e1474d99947a47667e8.jpg"
+            src= {data?.img}
             alt=""
           />
         </div>
 
         <div className="mt-4 flex w-full flex-col items-start justify-between ">
           <span class="text-xl font-medium text-primary dark:text-primaryDark lg:text-lg md:text-base">
-            Website Template
+            Website
           </span>
           <a
             target="_blank"
@@ -29,21 +29,23 @@ export default function Card() {
             href="#"
           >
             <h2 class="my-2 w-full text-left text-3xl font-bold lg:text-2xl ">
-              NFT collection Website
+              {data?.name}
             </h2>
           </a>
+          <h1> Tech : {(data?.tags).join(", ")}</h1>
         </div>
         <div className="flex w-full items-center  justify-between">
           <a
             target="_blank"
             className="rounded text-lg font-medium underline md:text-base "
             aria-label="NFT collection Website"
-            href="#"
+            href={data?.link}
           >
             Visit
           </a>
 
           <motion.a
+            target="_blank"
             href="https://github.com/andriankusuma97"
             className="text-3xl "
             whileHover={{ y: -3 }}

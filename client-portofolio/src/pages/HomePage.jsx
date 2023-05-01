@@ -3,25 +3,82 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../store/action/actionCreator";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
+import { useInView } from "react-intersection-observer";
+
 
 function HomePage() {
+  const project = useSelector((state) => {
+    return state.projectReducer.project;
+  });
+  const dispatch = useDispatch();
+  const { ref, inView } = useInView();
+  const animation = useAnimation();
+  const animation1 = useAnimation();
+
+  console.log(project)
+
+  useEffect(() => {
+    dispatch(fetchData());
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        x: 0,
+        transition: {
+          ease: [0.5, 0.71, 1, 1.5],
+          duration: 1,
+        },
+      });
+      animation1.start({
+        opacity: 1,
+        x: 0,
+        transition: {
+          ease: [0.5, 0.71, 1, 1.5],
+          duration: 1,
+        },
+      });
+      
+    }
+    if(!inView){
+      animation.start({
+        x: 200,
+        opacity: 0,
+      })
+      animation1.start({
+        x: -200,
+        opacity: 0,
+      })
+      
+    }
+  }, [inView]);
   return (
     <div className=" px-10">
-      <div className="flex items-center mt-12  p-10  bg-slate-100  rounded-lg ">
-        <div className="flex-1 w-full items-center  text-center">
-          <h1 className="text-5xl font-bold font-serif ">Andrian Kusuma</h1>
-          <h1 className="font-medium mb-8 text-xs hover:underline ">
+      <div
+        ref={ref}
+        className="flex items-center mt-12  p-10  bg-slate-100  rounded-lg "
+      >
+        <motion.div
+           initial={{
+            opacity: 0,
+            x: -200,
+           }}
+           animate={animation1}
+          className="flex-1 w-full items-center  text-center"
+        >
+          <motion.h1 className="text-5xl font-bold font-serif ">
+            Andrian Kusuma
+          </motion.h1>
+          <motion.h1 className="font-medium mb-8 text-xs hover:underline ">
             {" "}
             Developer | Software | Fullstack Javascript
-          </h1>
-          <h1 className="font-mono">
+          </motion.h1>
+          <motion.h1 className="font-mono">
             As a skilled full-stack developer, I likes to learn new interesting
             and challenging cases at work, and work focused on finding the best
             alternative solutions.
-          </h1>
+          </motion.h1>
           <h1 className="mt-5 font-medium mb-0 ">
             {" "}
             Developer | "I never dreamed about success. I worked for it".{" "}
@@ -56,8 +113,16 @@ function HomePage() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex-1 ">
+        </motion.div>
+
+        <motion.div
+           initial={{
+            opacity: 0,
+            x: 200,
+           }}
+           animate={animation}
+          className="flex-1 "
+        >
           <img
             className="mx-auto "
             src="https://png.pngtree.com/png-clipart/20230102/original/pngtree-3d-boy-head-portrait-png-image_8855190.png"
@@ -65,7 +130,7 @@ function HomePage() {
             height={300}
             width={300}
           />
-        </div>
+        </motion.div>
       </div>
 
       <div className=" bg-slate-100  rounded-md p-10 mt-20">
@@ -73,8 +138,10 @@ function HomePage() {
           My Projects:
         </h1>
         <div className=" grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0">
-          <Card />
-          <Card />
+        {project?.map((data, idx) => (
+              <Card data={data} key={data.id} />
+            )).slice(0,2)}
+       
         </div>
 
         <div className=" mt-10 font-bold hover:underline hover:text-lg">
