@@ -7,8 +7,22 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function Card({data}) {
+  
   return (
-    <div className=" col-span-6 ">
+    <motion.div
+    initial={{
+      opacity: 0,
+      x: 200,
+    }}
+    animate={{
+      opacity: 1,
+        x: 0,
+        transition: {
+          ease: [0.5, 0.71, 1, 1.5],
+          duration: 1,
+        },
+    }}
+    className=" col-span-6 ">
       <div className="bg-white relative flex flex-col w-full rounded-3xl rounded-br-2xl border border-solid border-dark bg-light p-4 shadow-xl ">
         <div className="flex w-full bg-white ">
           <motion.img
@@ -32,7 +46,7 @@ export default function Card({data}) {
               {data?.name}
             </h2>
           </a>
-          <h1> Tech : {(data?.tags).join(", ")}</h1>
+          <h1> Tech : {(data?.tags)?.join(", ")}</h1>
         </div>
         <div className="flex w-full items-center  justify-between">
           <a
@@ -56,6 +70,6 @@ export default function Card({data}) {
           </motion.a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

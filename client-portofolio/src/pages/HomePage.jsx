@@ -8,20 +8,24 @@ import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import { useInView } from "react-intersection-observer";
 
-
 function HomePage() {
   const project = useSelector((state) => {
     return state.projectReducer.project;
   });
+  const[loading,setLoading]= useState(true)
+
   const dispatch = useDispatch();
   const { ref, inView } = useInView();
   const animation = useAnimation();
   const animation1 = useAnimation();
 
-  console.log(project)
+  console.log(project);
 
   useEffect(() => {
     dispatch(fetchData());
+    if(project){
+      setLoading(false)
+    }
     if (inView) {
       animation.start({
         opacity: 1,
@@ -39,18 +43,16 @@ function HomePage() {
           duration: 1,
         },
       });
-      
     }
-    if(!inView){
+    if (!inView) {
       animation.start({
         x: 200,
         opacity: 0,
-      })
+      });
       animation1.start({
         x: -200,
         opacity: 0,
-      })
-      
+      });
     }
   }, [inView]);
   return (
@@ -60,11 +62,11 @@ function HomePage() {
         className="flex items-center mt-12  p-10  bg-slate-100  rounded-lg "
       >
         <motion.div
-           initial={{
+          initial={{
             opacity: 0,
             x: -200,
-           }}
-           animate={animation1}
+          }}
+          animate={animation1}
           className="flex-1 w-full items-center  text-center"
         >
           <motion.h1 className="text-5xl font-bold font-serif ">
@@ -116,11 +118,11 @@ function HomePage() {
         </motion.div>
 
         <motion.div
-           initial={{
+          initial={{
             opacity: 0,
             x: 200,
-           }}
-           animate={animation}
+          }}
+          animate={animation}
           className="flex-1 "
         >
           <img
@@ -138,10 +140,9 @@ function HomePage() {
           My Projects:
         </h1>
         <div className=" grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0">
-        {project?.map((data, idx) => (
-              <Card data={data} key={data.id} />
-            )).slice(0,2)}
-       
+          {
+         loading? <h1>loading.....</h1>   : project ?.map((data, idx) => <Card data={data} key={data.id} />)
+            .slice(0, 2)}
         </div>
 
         <div className=" mt-10 font-bold hover:underline hover:text-lg">
